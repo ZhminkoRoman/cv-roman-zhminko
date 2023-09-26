@@ -7,6 +7,10 @@
   min-height: 100vh;
 }
 
+.dashboard {
+  height: 100vh;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
@@ -97,7 +101,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -107,6 +111,7 @@
 .logo {
   position: relative;
 }
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
