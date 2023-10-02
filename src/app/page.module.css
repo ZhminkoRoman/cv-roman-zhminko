@@ -8,7 +8,25 @@
 }
 
 .dashboard {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+  background-color: #073b4c;
+}
+
+.scene {
+  flex: 1.5;
+}
+
+.text {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.text_description {
+  margin-top: 20px;
+  color: #ffffff;
 }
 
 .description {
