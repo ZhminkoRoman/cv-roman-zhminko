@@ -9,8 +9,8 @@ interface SceneProps {
 const Scene = ({ children }: SceneProps) => {
   return (
     <Canvas className={styles.scene}>
-      <hemisphereLight color={"#e0fbfc"} groundColor={"#3d5a80"} />
-      <directionalLight color="white" position={[3, 2, 1]} intensity={1} />
+      <hemisphereLight color={"#e0fbfc"} groundColor={"#293241"} />
+      <directionalLight color="white" position={[-1, 2, 4]} intensity={1} />
       <PerspectiveCamera
         far={1000}
         near={0.1}
