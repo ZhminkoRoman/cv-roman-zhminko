@@ -11,7 +11,7 @@ export default function Dashboard() {
       <Scene>
         <>
           <Box color={"#ee6c4d"} positionX={1} />
-          <Box color={"#98c1d9"} positionX={-1} />
+          <Box color={"#98c1d9"} positionX={-1} isLight />
         </>
       </Scene>
       <div className={styles.text}>
