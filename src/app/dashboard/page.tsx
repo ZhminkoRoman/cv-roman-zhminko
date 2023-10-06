@@ -10,8 +10,13 @@ export default function Dashboard() {
     <main className={styles.dashboard}>
       <Scene>
         <>
-          <Box color={"#ee6c4d"} positionX={1} />
-          <Box color={"#98c1d9"} positionX={-1} isLight />
+          <Box color={"#98c1d9"} positionX={0} positionY={0} isLight>
+            <>
+              <Box color={"#ee6c4d"} positionX={2.5} positionY={0} isToon />
+              <Box color={"#3d5a80"} positionX={-3} positionY={1.5} isPhong />
+              <Box color={"#e0fbfc"} positionX={-2.5} positionY={0} />
+            </>
+          </Box>
         </>
       </Scene>
       <div className={styles.text}>
