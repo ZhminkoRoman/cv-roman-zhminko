@@ -67,6 +67,8 @@ const Box = ({
   if (isToon) {
     const material = new MeshToonMaterial({
       color,
+      transparent: true,
+      opacity: 0.9,
     });
     return (
       <mesh
