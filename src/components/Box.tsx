@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 
 import {
   MeshPhongMaterial,
@@ -34,8 +34,26 @@ const Box = ({
   children,
 }: BoxProps): JSX.Element => {
   const ref = useRef<Mesh>(null!);
+  const [xPosition, setXPosition] = useState(0);
 
-  useFrame((state, delta) => (ref.current.rotation.y += delta / 2));
+  useEffect(() => {
+    const moveBox = (event: Event | KeyboardEvent) => {
+      if (ref.current) {
+        // ref.current.position.set(xPosition, 0, 0);
+        // ref.current.rotation.y += 0.05;
+        ref.current.rotation.z += 0.05;
+      }
+    };
+    window.addEventListener("keydown", (e: Event | KeyboardEvent) =>
+      moveBox(e)
+    );
+    return () =>
+      window.removeEventListener("keydown", (e: Event | KeyboardEvent) =>
+        moveBox(e)
+      );
+  }, [ref]);
+
+  // useFrame((state, delta) => (ref.current.rotation.y += delta / 2));
 
   /**
    * !: DoubleSide make render slowly;
@@ -67,15 +85,15 @@ const Box = ({
   if (isToon) {
     const material = new MeshToonMaterial({
       color,
-      transparent: true,
-      opacity: 0.9,
+      // transparent: true,
+      // opacity: 0.9,
     });
     return (
       <mesh
         ref={ref}
-        position={[positionX, positionY, 2]}
+        position={[positionX, positionY, 0]}
         // rotation={[0.3, 0.8, 0]}
-        geometry={sphereGeometry}
+        geometry={boxGeometry}
         material={material}
       >
         {children && children}

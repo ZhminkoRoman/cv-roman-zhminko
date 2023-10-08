@@ -9,17 +9,17 @@ interface SceneProps {
 
 const Scene = ({ children }: SceneProps) => {
   return (
-    <Canvas className={styles.scene} shadows={"soft"}>
-      {/* <hemisphereLight color={"#e0fbfc"} groundColor={"#293241"} /> */}
-      {/* <directionalLight color="white" position={[-1, 2, 4]} intensity={1} /> */}
+    <Canvas className={styles.scene} shadows={"soft"} camera={Camera()}>
+      <hemisphereLight color={"#e0fbfc"} groundColor={"#293241"} />
+      <directionalLight color="white" position={[-1, 2, 4]} intensity={1} />
       {/* <OrbitControls /> */}
-      <PerspectiveCamera
+      {/* <PerspectiveCamera
         far={1000}
         near={0.1}
         fov={45}
         makeDefault
         position={[0, 0, 6]}
-      />
+      /> */}
       {/* <Camera /> */}
       {children}
     </Canvas>
