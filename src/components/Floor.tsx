@@ -41,6 +41,7 @@ const Floor = (): JSX.Element => {
       rotation={[-Math.PI / 2, 0, 0]}
       geometry={geometry}
       material={material}
+      receiveShadow
     />
   );
 };

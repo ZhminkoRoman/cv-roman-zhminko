@@ -9,6 +9,7 @@ const Camera = () => {
   );
   camera.position.set(1, 1.5, 3);
   // camera.up.set(0, 0, 1);
+  // camera.
   camera.lookAt(0, 0, 0);
   return camera;
 };

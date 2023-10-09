@@ -10,9 +10,7 @@ import {
   Mesh,
   DoubleSide,
   SphereGeometry,
-  Vector3,
 } from "three";
-import { useFrame } from "@react-three/fiber";
 interface BoxProps {
   color: string;
   positionX: number;
@@ -43,28 +41,28 @@ const Box = ({
   const moveSpeed = 0.01;
   const rotationSpeed = 0.02;
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.rotation.x = Math.PI / 2;
-    }
-    const moveBox = (event: Event | KeyboardEvent) => {
-      if (ref.current) {
-        ref.current.position.x += moveSpeed;
-        ref.current.rotation.y -= moveSpeed;
-        console.log(ref.current.rotation.y, ref.current.position.y, yOffset);
-        // if (ref.current.position.y === yOffset) {
+  // useEffect(() => {
+  //   if (ref.current) {
+  //     ref.current.rotation.x = Math.PI / 2;
+  //   }
+  //   const moveBox = (event: Event | KeyboardEvent) => {
+  //     if (ref.current) {
+  //       ref.current.position.x += moveSpeed;
+  //       ref.current.rotation.y -= moveSpeed;
+  //       console.log(ref.current.rotation.y, ref.current.position.y, yOffset);
+  //       // if (ref.current.position.y === yOffset) {
 
-        // }
-      }
-    };
-    window.addEventListener("keydown", (e: Event | KeyboardEvent) =>
-      moveBox(e)
-    );
-    return () =>
-      window.removeEventListener("keydown", (e: Event | KeyboardEvent) =>
-        moveBox(e)
-      );
-  }, [ref]);
+  //       // }
+  //     }
+  //   };
+  //   window.addEventListener("keydown", (e: Event | KeyboardEvent) =>
+  //     moveBox(e)
+  //   );
+  //   return () =>
+  //     window.removeEventListener("keydown", (e: Event | KeyboardEvent) =>
+  //       moveBox(e)
+  //     );
+  // }, [ref]);
 
   // useFrame((state, delta) => (ref.current.rotation.y += delta / 2));
 
@@ -88,6 +86,7 @@ const Box = ({
         // rotation={[0.3, 0.8, 0]}
         geometry={sphereGeometry}
         material={material}
+        receiveShadow={true}
       >
         <pointLight color={"0xffffff"} intensity={20} distance={0} />
         {children && children}
@@ -108,6 +107,8 @@ const Box = ({
         position={[0, yOffset, 0]}
         // rotation={[0.3, 0.8, 0]}
         geometry={boxGeometry}
+        receiveShadow={true}
+        castShadow
         material={material}
       >
         {children && children}
@@ -126,6 +127,7 @@ const Box = ({
         ref={ref}
         position={[positionX, positionY, -3]}
         // rotation={[0.3, 0.8, 0]}
+        receiveShadow={true}
         geometry={sphereGeometry}
         material={material}
       />
@@ -144,6 +146,7 @@ const Box = ({
         ref={ref}
         position={[positionX, positionY, 0]}
         // rotation={[0.3, 0.8, 0]}
+        receiveShadow={true}
         geometry={sphereGeometry}
         material={material}
       />
@@ -163,6 +166,7 @@ const Box = ({
       ref={ref}
       position={[positionX, positionY, 0]}
       // rotation={[0.3, 0.8, 0]}
+      receiveShadow={true}
       geometry={sphereGeometry}
       material={material}
     />
