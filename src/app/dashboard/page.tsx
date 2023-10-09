@@ -2,6 +2,7 @@
 import styles from "../page.module.css";
 import Scene from "@/src/components/Scene";
 import Box from "@/src/components/Box";
+import Floor from "@/src/components/Floor";
 
 const colors = "#3d5a80 // #98c1d9 // #e0fbfc // #ee6c4d //#293241";
 
@@ -11,6 +12,7 @@ export default function Dashboard() {
       <Scene>
         <>
           <Box color={"#ee6c4d"} positionX={0} positionY={0} isToon />
+          <Floor />
           {/* <Box color={"#98c1d9"} positionX={0} positionY={0} isLight>
             <>
               <Box color={"#ee6c4d"} positionX={2.5} positionY={0} isToon />

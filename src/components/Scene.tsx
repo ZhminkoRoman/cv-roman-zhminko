@@ -12,7 +12,7 @@ const Scene = ({ children }: SceneProps) => {
     <Canvas className={styles.scene} shadows={"soft"} camera={Camera()}>
       <hemisphereLight color={"#e0fbfc"} groundColor={"#293241"} />
       <directionalLight color="white" position={[-1, 2, 4]} intensity={1} />
-      {/* <OrbitControls /> */}
+      <OrbitControls />
       {/* <PerspectiveCamera
         far={1000}
         near={0.1}

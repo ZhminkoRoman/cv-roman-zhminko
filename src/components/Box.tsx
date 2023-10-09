@@ -10,6 +10,7 @@ import {
   Mesh,
   DoubleSide,
   SphereGeometry,
+  Vector3,
 } from "three";
 import { useFrame } from "@react-three/fiber";
 interface BoxProps {
@@ -36,12 +37,24 @@ const Box = ({
   const ref = useRef<Mesh>(null!);
   const [xPosition, setXPosition] = useState(0);
 
+  const cubeHeight = 1;
+  const yOffset = cubeHeight / 2;
+
+  const moveSpeed = 0.01;
+  const rotationSpeed = 0.02;
+
   useEffect(() => {
+    if (ref.current) {
+      ref.current.rotation.x = Math.PI / 2;
+    }
     const moveBox = (event: Event | KeyboardEvent) => {
       if (ref.current) {
-        // ref.current.position.set(xPosition, 0, 0);
-        // ref.current.rotation.y += 0.05;
-        ref.current.rotation.z += 0.05;
+        ref.current.position.x += moveSpeed;
+        ref.current.rotation.y -= moveSpeed;
+        console.log(ref.current.rotation.y, ref.current.position.y, yOffset);
+        // if (ref.current.position.y === yOffset) {
+
+        // }
       }
     };
     window.addEventListener("keydown", (e: Event | KeyboardEvent) =>
@@ -71,7 +84,7 @@ const Box = ({
     return (
       <mesh
         ref={ref}
-        position={[positionX, positionY, 0]}
+        // position={[positionX, positionY, 0]}
         // rotation={[0.3, 0.8, 0]}
         geometry={sphereGeometry}
         material={material}
@@ -88,10 +101,11 @@ const Box = ({
       // transparent: true,
       // opacity: 0.9,
     });
+    console.log(yOffset);
     return (
       <mesh
         ref={ref}
-        position={[positionX, positionY, 0]}
+        position={[0, yOffset, 0]}
         // rotation={[0.3, 0.8, 0]}
         geometry={boxGeometry}
         material={material}
