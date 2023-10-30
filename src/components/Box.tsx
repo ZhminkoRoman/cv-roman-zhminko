@@ -107,7 +107,7 @@ const Box = ({
         position={[0, yOffset, 0]}
         // rotation={[0.3, 0.8, 0]}
         geometry={boxGeometry}
-        receiveShadow={true}
+        // receiveShadow={true}
         castShadow
         material={material}
       >

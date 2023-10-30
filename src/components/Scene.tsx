@@ -28,12 +28,13 @@ const Scene = ({ children }: SceneProps) => {
   return (
     <Canvas className={styles.scene} shadows={true} camera={Camera()}>
       <SoftShadows />
-      <hemisphereLight color={"#e0fbfc"} groundColor={"#293241"} />
+      {/* <hemisphereLight color={"#e0fbfc"} groundColor={"#293241"} /> */}
       {/* <directionalLight color="white" position={[-1, 2, 4]} intensity={1} /> */}
       <pointLight position={[0, 1.5, 1]} castShadow />
       <OrbitControls />
       {/* <EffectComposer autoClear={false}>
-        <Pixelation granularity={3} />
+        <Pixelation />
+        <DepthOfField />
       </EffectComposer> */}
       {children}
     </Canvas>
