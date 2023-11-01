@@ -3,11 +3,15 @@ import { KeyboardEvent, useEffect, useRef, useState } from "react";
 
 import {
   MeshPhongMaterial,
+  TextureLoader,
   MeshToonMaterial,
   MeshStandardMaterial,
   MeshPhysicalMaterial,
   BoxGeometry,
+  RepeatWrapping,
   Mesh,
+  SRGBColorSpace,
+  NearestFilter,
   DoubleSide,
   SphereGeometry,
   PlaneGeometry,

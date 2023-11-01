@@ -10,6 +10,10 @@ import {
   Mesh,
   DoubleSide,
   SphereGeometry,
+  TextureLoader,
+  NearestFilter,
+  RepeatWrapping,
+  SRGBColorSpace,
 } from "three";
 interface BoxProps {
   color: string;
@@ -84,9 +88,10 @@ const Box = ({
         ref={ref}
         // position={[positionX, positionY, 0]}
         // rotation={[0.3, 0.8, 0]}
-        geometry={sphereGeometry}
+        geometry={boxGeometry}
         material={material}
-        receiveShadow={true}
+        position={[0, yOffset, 0]}
+        // receiveShadow={true}
       >
         <pointLight color={"0xffffff"} intensity={20} distance={0} />
         {children && children}
@@ -95,12 +100,26 @@ const Box = ({
   }
 
   if (isToon) {
+    const loader = new TextureLoader();
+
+    const pixelTexture = (texture: THREE.Texture) => {
+      texture.minFilter = NearestFilter;
+      texture.magFilter = NearestFilter;
+      texture.generateMipmaps = false;
+      texture.wrapS = RepeatWrapping;
+      texture.wrapT = RepeatWrapping;
+      texture.colorSpace = SRGBColorSpace;
+      return texture;
+    };
+
+    const texChecker2 = pixelTexture(loader.load("./checker.png"));
+    texChecker2.repeat.set(1.5, 1.5);
     const material = new MeshToonMaterial({
-      color,
+      // color,
+      map: texChecker2,
       // transparent: true,
       // opacity: 0.9,
     });
-    console.log(yOffset);
     return (
       <mesh
         ref={ref}

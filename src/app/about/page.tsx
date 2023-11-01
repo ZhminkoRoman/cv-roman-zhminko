@@ -1,11 +1,15 @@
+"use client";
 import styles from "../page.module.css";
+import RawScene from "@/src/components/RawScene";
+import Box from "@/src/components/Box";
+import Floor from "@/src/components/Floor";
 
-export default function About() {
+const colors = "#3d5a80 // #98c1d9 // #e0fbfc // #ee6c4d //#293241";
+
+export default function Dashboard() {
   return (
-    <main className={styles.main}>
-      <div>
-        <p>About page</p>
-      </div>
+    <main className={styles.dashboard}>
+      <RawScene />
     </main>
   );
 }

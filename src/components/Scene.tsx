@@ -33,7 +33,7 @@ const Scene = ({ children }: SceneProps) => {
       <pointLight position={[0, 1.5, 1]} castShadow />
       <OrbitControls />
       {/* <EffectComposer autoClear={false}>
-        <Pixelation />
+        <Pixelation granularity={4} />
         <DepthOfField />
       </EffectComposer> */}
       {children}
