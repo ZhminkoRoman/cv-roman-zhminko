@@ -31,7 +31,7 @@ interface BoxProps {
 const Floor = (): JSX.Element => {
   const ref = useRef<Mesh>(null!);
 
-  const geometry = new PlaneGeometry(2000, 2000);
+  const geometry = new PlaneGeometry(10, 10);
   const material = new MeshPhongMaterial({
     color: 0xcbcbcb,
     depthWrite: false,

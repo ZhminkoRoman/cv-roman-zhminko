@@ -19,6 +19,8 @@ import {
   SSAO,
 } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
+import Box from "./Box";
+import Floor from "./Floor";
 
 interface SceneProps {
   children?: JSX.Element;
@@ -36,7 +38,10 @@ const Scene = ({ children }: SceneProps) => {
         <Pixelation granularity={4} />
         <DepthOfField />
       </EffectComposer> */}
-      {children}
+      <>
+        <Box color={"#ee6c4d"} positionX={0} positionY={0} isToon />
+        <Floor />
+      </>
     </Canvas>
   );
 };
