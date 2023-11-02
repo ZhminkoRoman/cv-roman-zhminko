@@ -7,15 +7,26 @@ import { RenderPixelatedPass } from "three/addons/postprocessing/RenderPixelated
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { GUI } from "three/addons/libs/lil-gui.module.min.js";
 import styles from "../app/page.module.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface SceneProps {
   children?: JSX.Element;
 }
 
 function RawScene() {
-  const [scene, setScene] = useState<any>();
-  return <h1>Test of Raw Scene</h1>;
+  const refBody = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [scene] = useState(new THREE.Scene());
+  const [_camera, setCamera] = useState<any>();
+  const [renderer, setRenderer] = useState<any>();
+  const [target] = useState(new THREE.Vector3(-0.5, 1.2, 0));
+  const [_controls, setControls] = useState<any>();
+
+  useEffect(() => {
+    return () => {};
+  }, []);
+
+  return <div ref={refBody}></div>;
 }
 
 export default RawScene;
