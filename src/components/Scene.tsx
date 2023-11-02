@@ -1,26 +1,47 @@
 import { Canvas } from "@react-three/fiber";
-import { PerspectiveCamera } from "@react-three/drei";
+import {
+  PerspectiveCamera,
+  OrbitControls,
+  SoftShadows,
+} from "@react-three/drei";
 import styles from "../app/page.module.css";
 import Camera from "./Camera";
+import {
+  EffectComposer,
+  Pixelation,
+  Bloom,
+  DepthOfField,
+  Vignette,
+  Outline,
+  Select,
+  Selection,
+  SMAA,
+  SSAO,
+} from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
+import Box from "./Box";
+import Floor from "./Floor";
 
 interface SceneProps {
-  children: JSX.Element;
+  children?: JSX.Element;
 }
 
 const Scene = ({ children }: SceneProps) => {
   return (
-    <Canvas className={styles.scene}>
+    <Canvas className={styles.scene} shadows={true} camera={Camera()}>
+      <SoftShadows />
       {/* <hemisphereLight color={"#e0fbfc"} groundColor={"#293241"} /> */}
       {/* <directionalLight color="white" position={[-1, 2, 4]} intensity={1} /> */}
-      <PerspectiveCamera
-        far={1000}
-        near={0.1}
-        fov={75}
-        makeDefault
-        position={[0, 0, 3]}
-      />
-      {/* <Camera /> */}
-      {children}
+      <pointLight position={[0, 1.5, 1]} castShadow />
+      <OrbitControls />
+      {/* <EffectComposer autoClear={false}>
+        <Pixelation granularity={4} />
+        <DepthOfField />
+      </EffectComposer> */}
+      <>
+        <Box color={"#ee6c4d"} positionX={0} positionY={0} isToon />
+        <Floor />
+      </>
     </Canvas>
   );
 };
